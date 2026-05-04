@@ -1,0 +1,23 @@
+name: P2P Bot Runner
+
+on:
+  schedule:
+    - cron: "*/2 * * * *"
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.2"
+
+      - name: Run Bot
+        env:
+          BOT_TOKEN: ${{ secrets.8743565545:AAF-cGFc9CyQUJrmvURt01teR4bgopb7kA4 }}
+          CHAT_ID: ${{ secrets.7563568293 }}
+        run: php bot.php
