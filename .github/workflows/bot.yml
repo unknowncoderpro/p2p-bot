@@ -1,23 +1,25 @@
-name: P2P Bot Runner
+name: P2P Binance Bot
 
 on:
   schedule:
     - cron: "*/2 * * * *"
+  workflow_dispatch:
 
 jobs:
-  run-bot:
+  run:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v4
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: "8.2"
 
-      - name: Run Bot
-        env:
-          BOT_TOKEN: ${{ secrets.8743565545:AAF-cGFc9CyQUJrmvURt01teR4bgopb7kA4 }}
-          CHAT_ID: ${{ secrets.7563568293 }}
+      - name: Run bot
         run: php bot.php
+        env:
+          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+          CHAT_ID: ${{ secrets.CHAT_ID }}
